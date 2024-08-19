@@ -31,6 +31,16 @@ function calculateProfitLoss() {
         profitLoss *= exchangeRate;
     }
 
-    // Display result
-    document.getElementById("result").innerHTML = `Profit/Loss: ${profitLoss.toFixed(2)} ${accountCurrency}`;
+    // Display result with "Profit" or "Loss"
+    const resultElement = document.getElementById("result");
+    if (profitLoss > 0) {
+        resultElement.innerHTML = `Profit: ${profitLoss.toFixed(2)} ${accountCurrency}`;
+        resultElement.style.color = "green";
+    } else if (profitLoss < 0) {
+        resultElement.innerHTML = `Loss: ${Math.abs(profitLoss).toFixed(2)} ${accountCurrency}`;
+        resultElement.style.color = "red";
+    } else {
+        resultElement.innerHTML = `No Profit or Loss`;
+        resultElement.style.color = "black";
+    }
 }
